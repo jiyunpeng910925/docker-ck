@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    click:
+      url: jdbc:clickhouse://localhost:8123/?database=default&socket_timeout=60000
+      username: default
+      password:
+      driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
+      initialSize: 10
+      maxActive: 100
+      minIdle: 10
+      maxWait: 6000
+    type: com.zaxxer.hikari.HikariDataSource
+#    hikari:
+#      maximum-pool-size: 10
+#      minimum-idle: 5
+#      connection-timeout: 30000
+#      idle-timeout: 60000
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+    lazy-loading-enabled: true
+    multiple-result-sets-enabled: true
+    use-generated-keys: true
+    default-statement-timeout: 60
+    default-fetch-size: 100
+  type-aliases-package: com.jyp.template.entity
